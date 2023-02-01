@@ -17,6 +17,7 @@ public class MessageController {
 	@Autowired
 	private KafkaProducer kafkaProducer;
 	
+	//publish simple message
 	@GetMapping("/publish")
 	public ResponseEntity<String> publish(@RequestParam String message){
 		kafkaProducer.sendMessage(message);
@@ -24,6 +25,7 @@ public class MessageController {
 		
 	}
 	
+	//publish user object
 	@PostMapping("/publishUser")
 	public ResponseEntity<String> publish(@RequestBody User user){
 		System.out.println("user Recieved: " + user.toString());
